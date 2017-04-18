@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -22,8 +23,7 @@ public class MainApp extends Application {
 	private ObservableList<Task> taskList = FXCollections.observableArrayList();
 	
 	public MainApp() {
-		taskList.add(new Task("item1", "do this"));
-		taskList.add(new Task("item2", "do that"));
+
 	}
 	
 	public ObservableList<Task> getTaskList() {
@@ -33,7 +33,8 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("To-Do List");
+		this.primaryStage.setTitle("Kanphnia2");
+		this.primaryStage.getIcons().add(new Image("file:images/clipboard_icon.png"));
 
 		// load RootLayout.fxml
 		FXMLLoader loader = new FXMLLoader();
