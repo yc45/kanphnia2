@@ -1,2 +1,2 @@
 # kanphnia2
-a gui to-do list based on https://github.com/albert-kw/kanphnia
+a gui to-do list based on the idea from https://github.com/albert-kw/kanphnia
