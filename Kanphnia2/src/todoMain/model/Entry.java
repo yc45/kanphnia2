@@ -26,8 +26,8 @@ public class Entry {
 		this.entryDate = new SimpleStringProperty(formattedDate);
 	}
 
-	public Entry(String task, String username, String password, String description) {
-		this.entryTitle = new SimpleStringProperty(task);
+	public Entry(String entry, String username, String password, String description) {
+		this.entryTitle = new SimpleStringProperty(entry);
 		this.entryUsername = new SimpleStringProperty(username);
 		this.entryPassword = new SimpleStringProperty(password);
 		this.entryDescription = new SimpleStringProperty(description);

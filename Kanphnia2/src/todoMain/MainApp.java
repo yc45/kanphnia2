@@ -13,21 +13,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import todoMain.model.Entry;
-import todoMain.view.TaskEditDialogController;
+import todoMain.view.AppEditDialogController;
 import todoMain.view.ToDoOverviewController;
 
 public class MainApp extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 
-	private ObservableList<Entry> taskList = FXCollections.observableArrayList();
+	private ObservableList<Entry> entryList = FXCollections.observableArrayList();
 	
 	public MainApp() {
 
 	}
 	
-	public ObservableList<Entry> getTaskList() {
-		return taskList;
+	public ObservableList<Entry> getEntryList() {
+		return entryList;
 	}
 	
 	@Override
@@ -64,7 +64,7 @@ public class MainApp extends Application {
 		return primaryStage;
 	}
 	
-	public boolean showTaskEditDialog(Entry t) throws IOException {
+	public boolean showAppEditDialog(Entry e) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MainApp.class.getResource("view/AppEditDialog.fxml"));
 		AnchorPane page = (AnchorPane) loader.load();
@@ -78,9 +78,9 @@ public class MainApp extends Application {
         dialogStage.setScene(scene);
 
         // Set the person into the controller.
-        TaskEditDialogController controller = loader.getController();
+        AppEditDialogController controller = loader.getController();
         controller.setDialogStage(dialogStage);
-        controller.setTask(t);
+        controller.setEntry(e);
 
         // Show the dialog and wait until the user closes it
         dialogStage.showAndWait();

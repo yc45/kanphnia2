@@ -17,7 +17,7 @@ import todoMain.model.Entry;
 public class ToDoOverviewController {
 
 	@FXML
-	private TableView<Entry> taskTable;
+	private TableView<Entry> entryTable;
 
 	@FXML
 	private TableColumn<Entry, String> appColumn;
@@ -52,12 +52,12 @@ public class ToDoOverviewController {
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 
-		taskTable.setItems(mainApp.getTaskList());
+		entryTable.setItems(mainApp.getEntryList());
 	}
 
-	private void showTaskDetails(Entry t) {
-		if (t != null) {
-			descriptionTextArea.setText(t.getDescription());
+	private void showEntryDetails(Entry e) {
+		if (e != null) {
+			descriptionTextArea.setText(e.getDescription());
 		}
 		else {
 			descriptionTextArea.setText("");
@@ -66,60 +66,60 @@ public class ToDoOverviewController {
 
 	@FXML
 	private void initialize() {
-		// Initialize the task table with the two columns
+		// Initialize the entry table with the two columns
 		appColumn.setCellValueFactory(cellData -> cellData.getValue().entryTitleProperty());
 		usernameColumn.setCellValueFactory(cellData -> cellData.getValue().entryUsernameProperty());
 		passwordColumn.setCellValueFactory(cellData -> cellData.getValue().entryPasswordProperty());
 		dateColumn.setCellValueFactory(cellData -> cellData.getValue().entryDateProperty());
 		descriptionTextArea.setText("");
 
-		taskTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showTaskDetails(newValue));
+		entryTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showEntryDetails(newValue));
 	}
 
 	@FXML
-	private void handleNewTask() throws IOException {
+	private void handleNewEntry() throws IOException {
 		Entry temp = new Entry();
-		boolean okClicked = mainApp.showTaskEditDialog(temp);
+		boolean okClicked = mainApp.showAppEditDialog(temp);
 		if (okClicked) {
-			mainApp.getTaskList().add(temp);
+			mainApp.getEntryList().add(temp);
 		}
 	}
 
 	@FXML
-	private void handleEditTask() throws IOException {
-		Entry selectedTask = taskTable.getSelectionModel().getSelectedItem();
+	private void handleEditEntry() throws IOException {
+		Entry selectedEntry = entryTable.getSelectionModel().getSelectedItem();
 
-		if (selectedTask != null) {
-			boolean okClicked = mainApp.showTaskEditDialog(selectedTask);
+		if (selectedEntry != null) {
+			boolean okClicked = mainApp.showAppEditDialog(selectedEntry);
 
 			if (okClicked) {
-				showTaskDetails(selectedTask);
+				showEntryDetails(selectedEntry);
 			}
 		}
 		else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("No Selection");
-			alert.setHeaderText("No Task Selected");
-			alert.setContentText("Please select a task in the table.");
+			alert.setHeaderText("No Entry Selected");
+			alert.setContentText("Please select an entry in the table.");
 
 			alert.showAndWait();
 		}
 	}
 
 	@FXML
-	private void handleDeleteTask() {
-		int selectedIndex = taskTable.getSelectionModel().getSelectedIndex();
+	private void handleDeleteEntry() {
+		int selectedIndex = entryTable.getSelectionModel().getSelectedIndex();
 
 		if (selectedIndex >= 0) {
-			taskTable.getItems().remove(selectedIndex);
+			entryTable.getItems().remove(selectedIndex);
 		}
 		else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("No Selection");
-			alert.setHeaderText("No Task Selected");
-			alert.setContentText("Please select a task in the table");
+			alert.setHeaderText("No Entry Selected");
+			alert.setContentText("Please select an entry in the table");
 			alert.showAndWait();
 		}
 	}
