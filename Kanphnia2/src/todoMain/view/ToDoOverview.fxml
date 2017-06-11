@@ -10,13 +10,15 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todoMain.view.ToDoOverviewController">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" layoutX="159.0" layoutY="53.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.49665551839464883" layoutX="159.0" layoutY="53.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TableView fx:id="taskTable" layoutX="-12.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="taskColumn" prefWidth="75.0" text="Task" />
+                      <TableColumn fx:id="appColumn" prefWidth="75.0" text="Application" />
+                        <TableColumn fx:id="usernameColumn" prefWidth="75.0" text="Username" />
+                        <TableColumn fx:id="passwordColumn" prefWidth="75.0" text="Password" />
                       <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
                     </columns>
                      <columnResizePolicy>

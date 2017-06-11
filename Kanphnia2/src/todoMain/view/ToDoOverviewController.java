@@ -12,18 +12,24 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import todoMain.MainApp;
-import todoMain.model.Task;
+import todoMain.model.Entry;
 
 public class ToDoOverviewController {
 
 	@FXML
-	private TableView<Task> taskTable;
+	private TableView<Entry> taskTable;
 
 	@FXML
-	private TableColumn<Task, String> taskColumn;
+	private TableColumn<Entry, String> appColumn;
 
 	@FXML
-	private TableColumn<Task, String> dateColumn;
+	private TableColumn<Entry, String> usernameColumn;
+	
+	@FXML
+	private TableColumn<Entry, String> passwordColumn;
+	
+	@FXML
+	private TableColumn<Entry, String> dateColumn;
 
 	@FXML
 	private TextArea descriptionTextArea;
@@ -49,7 +55,7 @@ public class ToDoOverviewController {
 		taskTable.setItems(mainApp.getTaskList());
 	}
 
-	private void showTaskDetails(Task t) {
+	private void showTaskDetails(Entry t) {
 		if (t != null) {
 			descriptionTextArea.setText(t.getDescription());
 		}
@@ -61,8 +67,10 @@ public class ToDoOverviewController {
 	@FXML
 	private void initialize() {
 		// Initialize the task table with the two columns
-		taskColumn.setCellValueFactory(cellData -> cellData.getValue().taskTitleProperty());
-		dateColumn.setCellValueFactory(cellData -> cellData.getValue().taskDateProperty());
+		appColumn.setCellValueFactory(cellData -> cellData.getValue().entryTitleProperty());
+		usernameColumn.setCellValueFactory(cellData -> cellData.getValue().entryUsernameProperty());
+		passwordColumn.setCellValueFactory(cellData -> cellData.getValue().entryPasswordProperty());
+		dateColumn.setCellValueFactory(cellData -> cellData.getValue().entryDateProperty());
 		descriptionTextArea.setText("");
 
 		taskTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showTaskDetails(newValue));
@@ -70,7 +78,7 @@ public class ToDoOverviewController {
 
 	@FXML
 	private void handleNewTask() throws IOException {
-		Task temp = new Task();
+		Entry temp = new Entry();
 		boolean okClicked = mainApp.showTaskEditDialog(temp);
 		if (okClicked) {
 			mainApp.getTaskList().add(temp);
@@ -79,7 +87,7 @@ public class ToDoOverviewController {
 
 	@FXML
 	private void handleEditTask() throws IOException {
-		Task selectedTask = taskTable.getSelectionModel().getSelectedItem();
+		Entry selectedTask = taskTable.getSelectionModel().getSelectedItem();
 
 		if (selectedTask != null) {
 			boolean okClicked = mainApp.showTaskEditDialog(selectedTask);

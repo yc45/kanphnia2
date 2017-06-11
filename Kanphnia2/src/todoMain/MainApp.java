@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import todoMain.model.Task;
+import todoMain.model.Entry;
 import todoMain.view.TaskEditDialogController;
 import todoMain.view.ToDoOverviewController;
 
@@ -20,13 +20,13 @@ public class MainApp extends Application {
 	private Stage primaryStage;
 	private BorderPane rootLayout;
 
-	private ObservableList<Task> taskList = FXCollections.observableArrayList();
+	private ObservableList<Entry> taskList = FXCollections.observableArrayList();
 	
 	public MainApp() {
 
 	}
 	
-	public ObservableList<Task> getTaskList() {
+	public ObservableList<Entry> getTaskList() {
 		return taskList;
 	}
 	
@@ -64,14 +64,14 @@ public class MainApp extends Application {
 		return primaryStage;
 	}
 	
-	public boolean showTaskEditDialog(Task t) throws IOException {
+	public boolean showTaskEditDialog(Entry t) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(MainApp.class.getResource("view/TaskEditDialog.fxml"));
+		loader.setLocation(MainApp.class.getResource("view/AppEditDialog.fxml"));
 		AnchorPane page = (AnchorPane) loader.load();
 		
 		// Create the dialog Stage.
         Stage dialogStage = new Stage();
-        dialogStage.setTitle("Edit Task");
+        dialogStage.setTitle("Edit Entry");
         dialogStage.initModality(Modality.WINDOW_MODAL);
         dialogStage.initOwner(primaryStage);
         Scene scene = new Scene(page);

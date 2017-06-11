@@ -6,7 +6,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import todoMain.model.Task;
+import todoMain.model.Entry;
 
 public class TaskEditDialogController {
 
@@ -23,7 +23,7 @@ public class TaskEditDialogController {
 	private Button cancelButton;
 
 	private Stage dialogStage;
-	private Task task;
+	private Entry task;
 	private boolean okClicked = false;
 
 	@FXML
@@ -37,7 +37,7 @@ public class TaskEditDialogController {
 	}
 
 	// set the task to be edited in this dialog
-	public void setTask(Task t) {
+	public void setTask(Entry t) {
 		this.task = t;
 		taskTextField.setText(t.getTitle());
 		descriptionTextField.setText(t.getDescription());
