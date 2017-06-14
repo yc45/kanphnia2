@@ -84,7 +84,7 @@ public class MainApp extends Application {
 		return primaryStage;
 	}
 	
-	public boolean showAppEditDialog(Entry e) throws IOException {
+	public boolean showAppEditDialog(Entry e) throws Exception {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(MainApp.class.getResource("view/AppEditDialog.fxml"));
 		AnchorPane page = (AnchorPane) loader.load();

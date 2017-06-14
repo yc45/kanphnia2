@@ -9,11 +9,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "entries")
 public class EntryListWrapper {
-
-	public EntryListWrapper() {
-		
-	}
-	
 	private List<Entry> entries;
 	
 	@XmlElement(name = "entry")

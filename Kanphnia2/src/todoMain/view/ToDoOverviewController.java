@@ -66,7 +66,7 @@ public class ToDoOverviewController {
 
 	@FXML
 	private void initialize() {
-		// Initialize the entry table with the two columns
+		// Initialize the entry table
 		appColumn.setCellValueFactory(cellData -> cellData.getValue().entryTitleProperty());
 		usernameColumn.setCellValueFactory(cellData -> cellData.getValue().entryUsernameProperty());
 		passwordColumn.setCellValueFactory(cellData -> cellData.getValue().entryPasswordProperty());
@@ -77,7 +77,7 @@ public class ToDoOverviewController {
 	}
 
 	@FXML
-	private void handleNewEntry() throws IOException {
+	private void handleNewEntry() throws Exception {
 		Entry temp = new Entry();
 		boolean okClicked = mainApp.showAppEditDialog(temp);
 		if (okClicked) {
@@ -86,7 +86,7 @@ public class ToDoOverviewController {
 	}
 
 	@FXML
-	private void handleEditEntry() throws IOException {
+	private void handleEditEntry() throws Exception {
 		Entry selectedEntry = entryTable.getSelectionModel().getSelectedItem();
 
 		if (selectedEntry != null) {

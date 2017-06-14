@@ -12,6 +12,7 @@ public class Entry {
 	private StringProperty entryPassword;
 	private StringProperty entryDate;
 	private StringProperty entryDescription;
+	private boolean encrypted = false;
 	
 	public Entry() {
 		this.entryTitle = new SimpleStringProperty("");
@@ -97,5 +98,13 @@ public class Entry {
 	
 	public StringProperty entryDescriptionProperty() {
 		return entryDescription;
+	}
+	
+	public boolean getEncryptStatus() {
+		return encrypted;
+	}
+	
+	public void setEncryptStatus(boolean b) {
+		encrypted = b;
 	}
 }

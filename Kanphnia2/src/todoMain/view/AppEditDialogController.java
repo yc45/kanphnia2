@@ -1,5 +1,6 @@
 package todoMain.view;
 
+import helpers.Crypt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -43,10 +44,14 @@ public class AppEditDialogController {
 	}
 
 	// set the entry to be edited in this dialog
-	public void setEntry(Entry e) {
+	public void setEntry(Entry e) throws Exception {
 		this.entry = e;
 		appTextField.setText(e.getTitle());
 		usernameTextField.setText(e.getUsername());
+		if (e.getEncryptStatus()) {
+			e.setPassword(Crypt.decrypt(e.getPassword()));
+			e.setEncryptStatus(false);
+		}
 		passwordTextField.setText(e.getPassword());
 		descriptionTextField.setText(e.getDescription());
 	}
@@ -85,11 +90,12 @@ public class AppEditDialogController {
 	}
 
 	@FXML
-	private void handleOk() {
+	private void handleOk() throws Exception {
 		if (isInputValid()) {
 			entry.setTitle(appTextField.getText());
 			entry.setUsername(usernameTextField.getText());
-			entry.setPassword(passwordTextField.getText());
+			entry.setPassword(Crypt.encrypt(passwordTextField.getText()));
+			entry.setEncryptStatus(true);
 			entry.setDescription(descriptionTextField.getText());
 			okClicked = true;
 			dialogStage.close();
