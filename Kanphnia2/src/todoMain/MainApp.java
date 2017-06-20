@@ -77,6 +77,7 @@ public class MainApp extends Application {
 		ToDoOverviewController controller2 = loader2.getController();
 		controller2.setMainApp(this);
 		
+		this.primaryStage.setResizable(false);
 		this.primaryStage.show();
 	}
 
@@ -103,6 +104,7 @@ public class MainApp extends Application {
         controller.setEntry(e);
 
         // Show the dialog and wait until the user closes it
+        dialogStage.setResizable(false);
         dialogStage.showAndWait();
         
         return controller.isOkClicked();

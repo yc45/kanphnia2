@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import helpers.Crypt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import todoMain.MainApp;
@@ -34,6 +37,9 @@ public class ToDoOverviewController {
 	@FXML
 	private TextArea descriptionTextArea;
 
+	@FXML
+	private Button copyButton;
+	
 	@FXML
 	private Button newButton;
 
@@ -76,6 +82,21 @@ public class ToDoOverviewController {
 		entryTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showEntryDetails(newValue));
 	}
 
+	@FXML
+	private void copyToClipboard() throws Exception {
+		int selectedIndex = entryTable.getSelectionModel().getSelectedIndex();
+        final ClipboardContent content = new ClipboardContent();
+        
+		if (selectedIndex >= 0) {
+			content.putString(Crypt.decrypt(entryTable.getItems().get(selectedIndex).getPassword()));
+			Clipboard.getSystemClipboard().setContent(content);
+		}
+		else {
+			content.putString("");
+			Clipboard.getSystemClipboard().setContent(content);
+		}
+	}
+	
 	@FXML
 	private void handleNewEntry() throws Exception {
 		Entry temp = new Entry();

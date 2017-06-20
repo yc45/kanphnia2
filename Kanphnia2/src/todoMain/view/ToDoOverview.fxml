@@ -8,9 +8,9 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todoMain.view.ToDoOverviewController">
+<AnchorPane prefHeight="330.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todoMain.view.ToDoOverviewController">
    <children>
-      <SplitPane dividerPositions="0.49665551839464883" layoutX="159.0" layoutY="53.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5896739130434783" layoutX="159.0" layoutY="53.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -19,7 +19,7 @@
                       <TableColumn fx:id="appColumn" prefWidth="75.0" text="Application" />
                         <TableColumn fx:id="usernameColumn" prefWidth="75.0" text="Username" />
                         <TableColumn fx:id="passwordColumn" prefWidth="75.0" text="Password" />
-                      <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
+                      <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Modified" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -37,6 +37,7 @@
                         <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteEntry" prefHeight="25.0" prefWidth="97.0" text="Delete" />
                     </buttons>
                   </ButtonBar>
+                  <Button fx:id="copyButton" layoutY="187.0" mnemonicParsing="false" onAction="#copyToClipboard" text="Copy" />
                </children>
             </AnchorPane>
         </items>

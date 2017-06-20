@@ -6,28 +6,28 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import todoMain.model.Entry;
 
 public class AppEditDialogController {
+	@FXML
+	private TextField appTextField;
 
-    @FXML
-    private TextField appTextField;
+	@FXML
+	private TextField usernameTextField;
 
-    @FXML
-    private TextField usernameTextField;
+	@FXML
+	private TextField passwordTextField;
 
-    @FXML
-    private TextField passwordTextField;
+	@FXML
+	private TextField descriptionTextField;
 
-    @FXML
-    private TextField descriptionTextField;
+	@FXML
+	private Button okButton;
 
-    @FXML
-    private Button okButton;
-
-    @FXML
-    private Button cancelButton;
+	@FXML
+	private Button cancelButton;
 
 	private Stage dialogStage;
 	private Entry entry;
@@ -35,7 +35,6 @@ public class AppEditDialogController {
 
 	@FXML
 	private void initialize() {
-
 	}
 
 	// sets the stage of this dialog
@@ -48,10 +47,10 @@ public class AppEditDialogController {
 		this.entry = e;
 		appTextField.setText(e.getTitle());
 		usernameTextField.setText(e.getUsername());
-		if (e.getEncryptStatus()) {
+		/*if (e.getEncryptStatus()) {
 			e.setPassword(Crypt.decrypt(e.getPassword()));
 			e.setEncryptStatus(false);
-		}
+		}*/
 		passwordTextField.setText(e.getPassword());
 		descriptionTextField.setText(e.getDescription());
 	}

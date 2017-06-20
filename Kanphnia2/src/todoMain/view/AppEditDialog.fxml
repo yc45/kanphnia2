@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="259.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todoMain.view.AppEditDialogController">
+<AnchorPane prefHeight="263.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="todoMain.view.AppEditDialogController">
    <children>
       <GridPane prefHeight="131.0" prefWidth="300.0" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -28,8 +29,8 @@
             <Label text="Description" GridPane.rowIndex="3" />
             <TextField fx:id="appTextField" GridPane.columnIndex="1" />
             <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="descriptionTextField" prefHeight="59.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <Button fx:id="okButton" layoutX="150.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleOk" text="OK" />
