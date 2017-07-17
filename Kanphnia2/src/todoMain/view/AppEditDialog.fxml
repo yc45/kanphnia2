@@ -20,16 +20,13 @@
           <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Application" />
             <Label text="Username" GridPane.rowIndex="1" />
             <Label text="Password" GridPane.rowIndex="2" />
-            <Label text="Description" GridPane.rowIndex="3" />
             <TextField fx:id="appTextField" GridPane.columnIndex="1" />
             <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="descriptionTextField" prefHeight="59.0" prefWidth="140.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <PasswordField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>

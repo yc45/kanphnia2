@@ -11,14 +11,12 @@ public class Entry {
 	private StringProperty entryUsername;
 	private StringProperty entryPassword;
 	private StringProperty entryDate;
-	private StringProperty entryDescription;
 	private boolean encrypted = false;
 	
 	public Entry() {
 		this.entryTitle = new SimpleStringProperty("");
 		this.entryUsername = new SimpleStringProperty("");
 		this.entryPassword = new SimpleStringProperty("");
-		this.entryDescription = new SimpleStringProperty("");
 		
 		LocalDateTime date = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm");
@@ -27,11 +25,10 @@ public class Entry {
 		this.entryDate = new SimpleStringProperty(formattedDate);
 	}
 
-	public Entry(String entry, String username, String password, String description) {
+	public Entry(String entry, String username, String password) {
 		this.entryTitle = new SimpleStringProperty(entry);
 		this.entryUsername = new SimpleStringProperty(username);
 		this.entryPassword = new SimpleStringProperty(password);
-		this.entryDescription = new SimpleStringProperty(description);
 		
 		LocalDateTime date = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm");
@@ -87,19 +84,7 @@ public class Entry {
 	public StringProperty entryDateProperty() {
 		return entryDate;
 	}
-	
-	public String getDescription() {
-		return entryDescription.get();
-	}
-	
-	public void setDescription(String description) {
-		entryDescription.set(description);
-	}
-	
-	public StringProperty entryDescriptionProperty() {
-		return entryDescription;
-	}
-	
+
 	public boolean getEncryptStatus() {
 		return encrypted;
 	}

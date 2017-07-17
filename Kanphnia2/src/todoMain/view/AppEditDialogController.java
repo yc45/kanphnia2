@@ -21,9 +21,6 @@ public class AppEditDialogController {
 	private TextField passwordTextField;
 
 	@FXML
-	private TextField descriptionTextField;
-
-	@FXML
 	private Button okButton;
 
 	@FXML
@@ -52,7 +49,6 @@ public class AppEditDialogController {
 			e.setEncryptStatus(false);
 		}*/
 		passwordTextField.setText(e.getPassword());
-		descriptionTextField.setText(e.getDescription());
 	}
 
 	public boolean isOkClicked() {
@@ -95,7 +91,6 @@ public class AppEditDialogController {
 			entry.setUsername(usernameTextField.getText());
 			entry.setPassword(Crypt.encrypt(passwordTextField.getText()));
 			entry.setEncryptStatus(true);
-			entry.setDescription(descriptionTextField.getText());
 			okClicked = true;
 			dialogStage.close();
 		}

@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import helpers.Crypt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -18,7 +19,9 @@ import todoMain.MainApp;
 import todoMain.model.Entry;
 
 public class ToDoOverviewController {
-
+    @FXML
+    private SplitPane overviewSplitPane;
+    
 	@FXML
 	private TableView<Entry> entryTable;
 
@@ -35,9 +38,6 @@ public class ToDoOverviewController {
 	private TableColumn<Entry, String> dateColumn;
 
 	@FXML
-	private TextArea descriptionTextArea;
-
-	@FXML
 	private Button copyButton;
 	
 	@FXML
@@ -52,22 +52,13 @@ public class ToDoOverviewController {
 	private MainApp mainApp;
 
 	public ToDoOverviewController() {
-
+		
 	}
 
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
 
 		entryTable.setItems(mainApp.getEntryList());
-	}
-
-	private void showEntryDetails(Entry e) {
-		if (e != null) {
-			descriptionTextArea.setText(e.getDescription());
-		}
-		else {
-			descriptionTextArea.setText("");
-		}
 	}
 
 	@FXML
@@ -77,9 +68,6 @@ public class ToDoOverviewController {
 		usernameColumn.setCellValueFactory(cellData -> cellData.getValue().entryUsernameProperty());
 		passwordColumn.setCellValueFactory(cellData -> cellData.getValue().entryPasswordProperty());
 		dateColumn.setCellValueFactory(cellData -> cellData.getValue().entryDateProperty());
-		descriptionTextArea.setText("");
-
-		entryTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showEntryDetails(newValue));
 	}
 
 	@FXML
@@ -114,7 +102,7 @@ public class ToDoOverviewController {
 			boolean okClicked = mainApp.showAppEditDialog(selectedEntry);
 
 			if (okClicked) {
-				showEntryDetails(selectedEntry);
+				// removed description field
 			}
 		}
 		else {
