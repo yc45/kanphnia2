@@ -1,16 +1,11 @@
 package todoMain.view;
 
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import helpers.Crypt;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.control.Alert;
