@@ -133,12 +133,18 @@ public class ToDoOverviewController {
 	}
 	
 	@FXML
-	private void handleShowHide() {
+	private void handleShowHide() throws Exception {
 		if (show) {
 			showhideButton.setText("Hide");
+			for (Entry e : entryTable.getItems()) {
+				e.setPassword(Crypt.decrypt(e.getPassword()));
+			}
 		}
 		else {
 			showhideButton.setText("Show");
+			for (Entry e : entryTable.getItems()) {
+				e.setPassword(Crypt.encrypt(e.getPassword()));
+			}
 		}
 		
 		show = !show;
