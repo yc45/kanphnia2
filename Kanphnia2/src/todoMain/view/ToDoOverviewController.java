@@ -44,6 +44,10 @@ public class ToDoOverviewController {
 	@FXML
 	private Button deleteButton;
 
+	@FXML
+	private Button showhideButton;
+	private static boolean show = true;
+	
 	private MainApp mainApp;
 
 	public ToDoOverviewController() {
@@ -126,5 +130,17 @@ public class ToDoOverviewController {
 			alert.setContentText("Please select an entry in the table");
 			alert.showAndWait();
 		}
+	}
+	
+	@FXML
+	private void handleShowHide() {
+		if (show) {
+			showhideButton.setText("Hide");
+		}
+		else {
+			showhideButton.setText("Show");
+		}
+		
+		show = !show;
 	}
 }

@@ -17,7 +17,7 @@
                       <TableColumn fx:id="appColumn" prefWidth="75.0" text="Application" />
                         <TableColumn fx:id="usernameColumn" prefWidth="75.0" text="Username" />
                         <TableColumn fx:id="passwordColumn" prefWidth="75.0" text="Password" />
-                      <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Modified" />
+                      <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Last Modified" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -31,6 +31,7 @@
                 <Button fx:id="newButton" layoutX="6.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleNewEntry" prefHeight="25.0" prefWidth="61.0" text="New..." AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="54.0" />
                   <Button fx:id="editButton" layoutX="6.0" layoutY="93.0" mnemonicParsing="false" onAction="#handleEditEntry" prefHeight="25.0" prefWidth="61.0" text="Edit..." AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="94.0" />
                   <Button fx:id="deleteButton" layoutX="6.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleDeleteEntry" prefHeight="25.0" prefWidth="61.0" text="Delete" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="134.0" />
+                  <Button fx:id="showhideButton" layoutX="6.0" layoutY="164.0" mnemonicParsing="false" onAction="#handleShowHide" prefHeight="25.0" prefWidth="61.0" text="Show" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="174.0" />
                </children>
             </AnchorPane>
         </items>

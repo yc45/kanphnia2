@@ -65,8 +65,8 @@ public class Entry {
 		return entryPassword.get();
 	}
 	
-	public void setPassword(String title) {
-		entryPassword.set(title);
+	public void setPassword(String password) {
+		entryPassword.set(password);
 	}
 	
 	public StringProperty entryPasswordProperty() {
