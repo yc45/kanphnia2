@@ -24,8 +24,21 @@ public class RootLayoutController {
 	// create new entries
 	@FXML
 	private void handleNew() {
-		mainApp.getEntryList().clear();
-		mainApp.setFilePath(null);
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Want to save your changes to the current file?");
+		alert.setContentText("");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			File entryFile = mainApp.getFilePath();
+			mainApp.saveEntryDataToFile(entryFile);
+			mainApp.getEntryList().clear();
+			mainApp.setFilePath(null);
+		} else {
+			mainApp.getEntryList().clear();
+			mainApp.setFilePath(null);
+		}
 	}
 	
 	
@@ -90,7 +103,6 @@ public class RootLayoutController {
 		} else {
 		    // ... user chose CANCEL or closed the dialog
 		}
-		
 	}
 	
 	@FXML

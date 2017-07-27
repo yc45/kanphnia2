@@ -2,6 +2,7 @@ package todoMain;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.prefs.Preferences;
 
 import javax.xml.bind.JAXBContext;
@@ -15,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -42,6 +44,14 @@ public class MainApp extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
+		primaryStage.setOnCloseRequest(evt -> {
+	        // prevent window from closing
+	        evt.consume();
+
+	        // execute own shutdown procedure
+	        shutdown(primaryStage);
+	    });
+		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Kanphnia2");
 		this.primaryStage.getIcons().add(new Image("file:images/clipboard_icon.png"));
@@ -79,6 +89,16 @@ public class MainApp extends Application {
 		
 		this.primaryStage.setResizable(false);
 		this.primaryStage.show();
+	}
+
+	private void shutdown(Stage mainWindow) {
+	    // you could also use your logout window / whatever here instead
+	    Alert alert = new Alert(Alert.AlertType.NONE, "Exit Kanphnia2?", ButtonType.YES, ButtonType.NO);
+	    alert.setTitle("Confirm Exit");
+	    if (alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES) {
+	        // you may need to close other windows or replace this with Platform.exit();
+	        mainWindow.close();
+	    }
 	}
 
 	public Stage getPrimaryStage() {
