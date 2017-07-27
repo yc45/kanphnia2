@@ -26,25 +26,34 @@ public class RootLayoutController {
 	private void handleNew() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmation Dialog");
-		alert.setHeaderText("Want to save your changes to the current file?");
+		alert.setHeaderText("Do you want to save your current changes?");
 		alert.setContentText("");
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
 			File entryFile = mainApp.getFilePath();
 			mainApp.saveEntryDataToFile(entryFile);
-			mainApp.getEntryList().clear();
-			mainApp.setFilePath(null);
-		} else {
-			mainApp.getEntryList().clear();
-			mainApp.setFilePath(null);
 		}
+			
+		mainApp.getEntryList().clear();
+		mainApp.setFilePath(null);
 	}
 	
 	
 	// use FileChooser to let the user select an address book to load
 	@FXML
 	private void handleOpen() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmation Dialog");
+		alert.setHeaderText("Do you want to save your current changes?");
+		alert.setContentText("");
+		
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){ 
+			File entryFile = mainApp.getFilePath();
+			mainApp.saveEntryDataToFile(entryFile);
+		}
+		
 		FileChooser fileChooser = new FileChooser();
 		
 		// set extension filter
@@ -110,7 +119,7 @@ public class RootLayoutController {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Kanphnia2");
 		alert.setHeaderText("About");
-		alert.setContentText("This is a password manager");
+		alert.setContentText("This is a password manager.");
 		
 		alert.showAndWait();
 	}
