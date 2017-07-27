@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import helpers.Crypt;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -169,6 +170,13 @@ public class MainApp extends Application {
 			
 			entryList.clear();
 			entryList.addAll(wrapper.getEntries());
+			
+			// debug
+			for (Entry e : entryList) {
+				System.out.println("initial password is " + e.getPassword(false));
+				e.setOriginalPassword(Crypt.encrypt(e.getPassword(false)));
+				e.setPassword(e.getPassword(true));
+			}
 			
 			// save the file path
 			setFilePath(f);

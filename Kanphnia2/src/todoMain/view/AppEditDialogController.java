@@ -43,11 +43,7 @@ public class AppEditDialogController {
 		this.entry = e;
 		appTextField.setText(e.getTitle());
 		usernameTextField.setText(e.getUsername());
-		/*if (e.getEncryptStatus()) {
-			e.setPassword(Crypt.decrypt(e.getPassword()));
-			e.setEncryptStatus(false);
-		}*/
-		passwordTextField.setText(e.getPassword());
+		passwordTextField.setText(e.getPassword(false));
 	}
 
 	public boolean isOkClicked() {
@@ -89,7 +85,7 @@ public class AppEditDialogController {
 			entry.setTitle(appTextField.getText());
 			entry.setUsername(usernameTextField.getText());
 			entry.setPassword(Crypt.encrypt(passwordTextField.getText()));
-			entry.setEncryptStatus(true);
+			entry.setOriginalPassword(Crypt.encrypt(passwordTextField.getText()));
 			okClicked = true;
 			dialogStage.close();
 		}

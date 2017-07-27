@@ -75,7 +75,7 @@ public class ToDoOverviewController {
         final ClipboardContent content = new ClipboardContent();
         
 		if (selectedIndex >= 0) {
-			content.putString(Crypt.decrypt(entryTable.getItems().get(selectedIndex).getPassword()));
+			content.putString(Crypt.decrypt(entryTable.getItems().get(selectedIndex).getPassword(false)));
 			Clipboard.getSystemClipboard().setContent(content);
 		}
 		else {
@@ -137,13 +137,15 @@ public class ToDoOverviewController {
 		if (show) {
 			showhideButton.setText("Hide");
 			for (Entry e : entryTable.getItems()) {
-				e.setPassword(Crypt.decrypt(e.getPassword()));
+				System.out.println("the password is " + e.getPassword(false));
+				e.setPassword(e.getPassword(false));
 			}
 		}
 		else {
 			showhideButton.setText("Show");
 			for (Entry e : entryTable.getItems()) {
-				e.setPassword(Crypt.encrypt(e.getPassword()));
+				System.out.println("the password is " + e.getPassword(true));
+				e.setPassword(e.getPassword(true));
 			}
 		}
 		
