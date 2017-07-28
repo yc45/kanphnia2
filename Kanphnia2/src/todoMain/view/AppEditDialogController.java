@@ -43,7 +43,7 @@ public class AppEditDialogController {
 		this.entry = e;
 		appTextField.setText(e.getTitle());
 		usernameTextField.setText(e.getUsername());
-		passwordTextField.setText(e.getPassword(false));
+		passwordTextField.setText("");
 	}
 
 	public boolean isOkClicked() {
@@ -84,7 +84,12 @@ public class AppEditDialogController {
 		if (isInputValid()) {
 			entry.setTitle(appTextField.getText());
 			entry.setUsername(usernameTextField.getText());
-			entry.setPassword(Crypt.encrypt(passwordTextField.getText()));
+			if (ToDoOverviewController.show) {
+				entry.setPassword(entry.getPassword(true));
+			}
+			else {
+				entry.setPassword(passwordTextField.getText());
+			}
 			entry.setOriginalPassword(Crypt.encrypt(passwordTextField.getText()));
 			okClicked = true;
 			dialogStage.close();

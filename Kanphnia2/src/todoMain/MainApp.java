@@ -171,9 +171,8 @@ public class MainApp extends Application {
 			entryList.clear();
 			entryList.addAll(wrapper.getEntries());
 			
-			// debug
+			// initialize all password displayed to be ********
 			for (Entry e : entryList) {
-				System.out.println("initial password is " + e.getPassword(false));
 				e.setOriginalPassword(Crypt.encrypt(e.getPassword(false)));
 				e.setPassword(e.getPassword(true));
 			}
